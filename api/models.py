@@ -16,7 +16,7 @@ class Area(models.Model):
 
 
 class Deer(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     area = models.ForeignKey("Area", on_delete=models.DO_NOTHING)
 
     class Meta:
@@ -24,14 +24,14 @@ class Deer(models.Model):
 
 
 class BasePricing(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
 
     class Meta:
         db_table = 'base_pricing'
 
 
 class User(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     base_pricing = models.ForeignKey("BasePricing", on_delete=models.DO_NOTHING)
 
     class Meta:
