@@ -22,7 +22,7 @@ class ParkingZoneDiscount(BaseDiscount):
         user_coods = Point(user.use_end_lat, user.use_end_lng)
         for parkingzone in parkingzones:
             parkingzone_coods = parkingzone.center_lat_lng
-            if distance.distance(parkingzone_coods, user_coods).km < parkingzone.radius:
+            if distance.distance(parkingzone_coods, user_coods).m < parkingzone.radius:
                 self.basic_rate = base_policy_const[user.use_deer.area_id]["basic_rate"]
                 self.per_minute_rate = base_policy_const[user.use_deer.area_id]["per_minute_rate"]
                 return True
@@ -41,7 +41,7 @@ class EarlyReuseDiscount(BaseDiscount):
         return before_fare - self.calculate_discount_amount(self, user)
 
     def policy_check(self, user: UserDTO) -> bool:
-        if user.use_start_at.replace(tzinfo=None) - UserRecords.objects.get(user_id=user.user_id).end_at.replace(tzinfo=None) < REUSE_TIMEDELTA:
+        if user.use_start_at.replace(tzinfo=None) - UserRecords.objects.filter(user_id=user.user_id).latest("end_at").end_at.replace(tzinfo=None) < REUSE_TIMEDELTA:
             self.basic_rate = base_policy_const[1]["basic_rate"]
             self.per_minute_rate = base_policy_const[1]["per_minute_rate"]
             return True
