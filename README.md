@@ -127,7 +127,8 @@ content-type: "application/json"
 ```json
 {
     "message": "SUCCESS",
-    "charge_cost": "2290, \"요금 근거: f['790: 기본 요금, 150: 분당 요금의 기본요금제', '규정시간내 재이용 할인 ', 'parkingzone 할인']"
+    "charge_cost": "1390",
+    "요금 근거": "['790: 기본 요금, 150: 분당 요금의 기본요금제']"
 }
 ```
 
