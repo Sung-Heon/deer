@@ -59,9 +59,14 @@ etc: postman
   
 
 
-## 4. 클래스 다이어그램
+## 4. 다이어그램
+### 클래스 다이어그램
 ![image](https://user-images.githubusercontent.com/32921115/142778108-d0e544a1-44c9-4fa4-8fdc-552698625f8d.png)
 
+### 모델링
+![스크린샷 2021-11-22 오후 1 48 56](https://user-images.githubusercontent.com/13060192/142802839-4d9c3936-fbd5-4721-a20a-1e1332bcd6cf.png)
+
+특이사항: base_pricing을 따로 빼서, 추후 월 정액제 추가할 시를 대비하였음.
 
 
 
@@ -93,7 +98,7 @@ etc: postman
 이러한 생각에 비추어 각 정책에 특성에 맞게 interface로 추상화하고 상속을 받아, 확장가능성을 도모하였다.
 
 
-#6 구현 API
+# 6 구현 API
  요금계산 API
 *HTTP Request**
 
